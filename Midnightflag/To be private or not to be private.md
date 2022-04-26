@@ -14,12 +14,10 @@ En manipulant l'URL, je m'aperçois rapidement qu'une faille LFI est exploitable
 Je commence donc à injecter un payload avec double encodage afin de récupérer le contenu du fichier **/etc/passwd** :
 `https://cloud.midnightflag.fr/index.php?categorie=..%252f..%252f..%252fetc%252fpasswd`
 
-J'ai bien le contenu du fichier en retour :
+J'ai bien le contenu du fichier en retour mais je ne vois aucun utilisateur ou service exploitable :
 ![cloud0.png](./Images/cloud0.png)
 
-Cependant, je ne vois aucun utilisateur ou service exploitable.
-
-J'essaye par la suite d'obtenir une RFI/RCE via différents payloads LFI ou via les PHP wrappers mais rien de concluant.
+J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
 
 Je décide donc de télécharger le contenu du fichier index.php grâce au wrapper PHP filter :
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=index.php`
