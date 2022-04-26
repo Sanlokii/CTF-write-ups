@@ -1,4 +1,4 @@
-# CTF Midnight Flag : INEKTION
+# CTF Midnight Flag : INFEKTION
 
 ## Web / Stéganographie
 
