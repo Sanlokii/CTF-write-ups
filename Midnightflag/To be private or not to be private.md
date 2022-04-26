@@ -65,7 +65,8 @@ Après téléchargement de l'enregistrement audio, je l'ouvre avec le logiciel A
 
 L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme :
 
-![personnal_creation.wav](./Sounds/personnal_creation.wav)
+![personnal_creation.mp4](./Sounds/personnal_creation.mp4)
+
 
 Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
 
