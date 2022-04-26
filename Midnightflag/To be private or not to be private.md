@@ -66,6 +66,6 @@ Après téléchargement de l'enregistrement, je l'ouvre avec le logiciel Audacit
 L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme.
 
 Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
-![cloud2.png](./Images/cloud1.png)
+![cloud2.png](./Images/cloud2.png)
 
 Flag : MCTF{H1d3_Y0uR_S3cRe7s}
