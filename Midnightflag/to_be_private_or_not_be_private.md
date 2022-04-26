@@ -1,6 +1,6 @@
 # CTF Midnight flag
 
-## Web / Steganographie
+## Web / Stéganographie
 
 ### Challenge : To be private or not be private 
 
@@ -45,7 +45,7 @@ Après décodage, je vois le code PHP suivant correspondant aux filtres LFI (byp
     }
     ?>
 ```
-A partir de cette instant, je cherche un petit moment avant de poursuivre le challenge.
+A partir de cet instant, je cherche un petit moment avant de poursuivre le challenge.
 Le fuzzing n'étant pas autorisé sur ce challenge, il est venu le temps du **#guessing** !
 
 En regardant le nom du challenge et par rapport à la structure du site, après multiples tentatives je tente de joindre la page private.php : [https://cloud.midnightflag.fr/index.php?categorie=private.php](https://cloud.midnightflag.fr/index.php?categorie=private.php) et j'ai bien un retour !
@@ -65,9 +65,9 @@ Je suppose donc que le site possède une catégorie personal, je me rend donc su
 
 Après téléchargement de l'enregistrement, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
 
-L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectogramme.
+L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme.
 
-Après inversion de la piste audio et analyse du spectogramme, je récupère l'information suivante :
+Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
 ![cloud1.png](./Images/cloud1.png)
 
 Flag : MCTF{H1d3_Y0uR_S3cRe7s}
