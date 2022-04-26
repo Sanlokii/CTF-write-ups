@@ -7,8 +7,7 @@
 **Auteur :** Spownark / **Points :** 500
 
 
-L'énoncé du challenge nous donne le site suivant : 
-[https://cloud.midnightflag.fr/index.php](https://cloud.midnightflag.fr/index.php)
+L'énoncé du challenge nous donne le site suivant : `https://cloud.midnightflag.fr/index.php`
 
 En manipulant l'URL, je m'aperçois rapidement qu'une faille LFI est exploitable.
 Je commence donc à injecter un payload avec double encodage afin de récupérer le contenu du fichier **/etc/passwd** :
@@ -46,7 +45,7 @@ A partir de cet instant, je cherche un petit moment avant de poursuivre le chall
 J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
 Le fuzzing n'étant pas autorisé sur ce challenge, il est venu le temps du **#guessing** !
 
-En regardant le nom du challenge et par rapport à la structure du site, après multiples tentatives je tente de joindre la page private.php : [https://cloud.midnightflag.fr/index.php?categorie=private.php](https://cloud.midnightflag.fr/index.php?categorie=private.php) et j'ai bien un retour !
+En regardant le nom du challenge et par rapport à la structure du site, après multiples tentatives je tente de joindre la page private.php : `https://cloud.midnightflag.fr/index.php?categorie=private.php` et j'ai bien un retour !
 
 Je récupère donc le code source de cette page avec le même payload que précédemment :
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=private.php`
@@ -59,7 +58,7 @@ Je remarque le commentaire suivant avec des chars en ASCII : `Source code`
 
 Après conversion, je récupère la valeur suivante : **personal**
 
-Je suppose donc que le site possède une catégorie personal, je me rend donc sur l'URL [ https://cloud.midnightflag.fr/index.php?categorie=personal.php](https://cloud.midnightflag.fr/index.php?categorie=personal.php) et je tombe sur un enregistrement audio au format wav.
+Je suppose donc que le site possède une catégorie personal, je me rend donc sur l'URL `https://cloud.midnightflag.fr/index.php?categorie=personal.php` et je tombe sur un enregistrement audio au format wav.
 
 Après téléchargement de l'enregistrement audio, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
 
