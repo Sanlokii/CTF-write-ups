@@ -1,8 +1,8 @@
-# CTF Midnight flag
+# CTF Midnight Flag : INEKTION
 
 ## Web / Stéganographie
 
-### Challenge : To be private or not be private 
+### Challenge : To be private or not to be private 
 
 **Auteur :** Spownark / **Points :** 500
 
