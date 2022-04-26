@@ -17,7 +17,7 @@ J'ai bien le contenu du fichier en retour mais je ne vois aucun utilisateur ou s
 
 ![cloud1](https://user-images.githubusercontent.com/49941629/165366730-29a98123-13f2-47a2-ad28-a2bf67c8165f.png)
 
-Je décide donc de télécharger le contenu du fichier index.php grâce au wrapper PHP filter :
+Je décide donc de télécharger le contenu du fichier index.php grâce au wrapper PHP :
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=index.php`
 
 Avec cette requête, je récupère le contenu du fichier index.php en base64 directement sur la page web.
