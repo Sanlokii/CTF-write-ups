@@ -69,6 +69,6 @@ https://user-images.githubusercontent.com/49941629/165365721-bf3fb966-fcdc-4e0e-
 
 Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
 
-![cloud2.png](./Images/cloud2.png)
+![cloud2](https://user-images.githubusercontent.com/49941629/165366030-8d6061f3-34d3-4f9b-8bfd-6a262bef336e.png)
 
 Flag : MCTF{H1d3_Y0uR_S3cRe7s}
