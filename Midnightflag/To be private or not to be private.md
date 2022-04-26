@@ -18,8 +18,6 @@ J'ai bien le contenu du fichier en retour mais je ne vois aucun utilisateur ou s
 
 ![cloud0.png](./Images/cloud0.png)
 
-J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
-
 Je décide donc de télécharger le contenu du fichier index.php grâce au wrapper PHP filter :
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=index.php`
 
@@ -45,6 +43,7 @@ Après décodage, je vois le code PHP suivant correspondant aux filtres LFI appl
     ?>
 ```
 A partir de cet instant, je cherche un petit moment avant de poursuivre le challenge car le code PHP récupéré nous donne aucune information supplémentaire.
+J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
 Le fuzzing n'étant pas autorisé sur ce challenge, il est venu le temps du **#guessing** !
 
 En regardant le nom du challenge et par rapport à la structure du site, après multiples tentatives je tente de joindre la page private.php : [https://cloud.midnightflag.fr/index.php?categorie=private.php](https://cloud.midnightflag.fr/index.php?categorie=private.php) et j'ai bien un retour !
@@ -62,9 +61,11 @@ Après conversion, je récupère la valeur suivante : **personal**
 
 Je suppose donc que le site possède une catégorie personal, je me rend donc sur l'URL [ https://cloud.midnightflag.fr/index.php?categorie=personal.php](https://cloud.midnightflag.fr/index.php?categorie=personal.php) et je tombe sur un enregistrement audio au format wav.
 
-Après téléchargement de l'enregistrement, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
+Après téléchargement de l'enregistrement audio, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
 
-L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme.
+L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme :
+
+![personnal_creation.wav](./Sounds/personnal_creation.wav)
 
 Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
 
