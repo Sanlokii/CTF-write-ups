@@ -15,6 +15,7 @@ Je commence donc à injecter un payload avec double encodage afin de récupérer
 `https://cloud.midnightflag.fr/index.php?categorie=..%252f..%252f..%252fetc%252fpasswd`
 
 J'ai bien le contenu du fichier en retour mais je ne vois aucun utilisateur ou service exploitable :
+
 ![cloud0.png](./Images/cloud0.png)
 
 J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
@@ -66,6 +67,7 @@ Après téléchargement de l'enregistrement, je l'ouvre avec le logiciel Audacit
 L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme.
 
 Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
+
 ![cloud2.png](./Images/cloud2.png)
 
 Flag : MCTF{H1d3_Y0uR_S3cRe7s}
