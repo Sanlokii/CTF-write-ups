@@ -6,6 +6,7 @@
 
 **Auteur :** Spownark / **Points :** 500
 
+***
 
 L'énoncé du challenge nous donne le site suivant : `https://cloud.midnightflag.fr/index.php`
 
