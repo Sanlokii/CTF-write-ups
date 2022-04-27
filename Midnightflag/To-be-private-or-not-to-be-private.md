@@ -4,7 +4,7 @@
 
 ### Challenge : To be private or not to be private 
 
-**Auteur :** Spownark / **Points :** 500
+**Points :** 500
 
 ***
 
@@ -74,4 +74,4 @@ Après inversion de la piste audio et analyse du spectre, je récupère l'inform
 
 Flag : MCTF{H1d3_Y0uR_S3cRe7s}
 
-Merci à Spownark pour le challenge !
+Merci au créateur du challenge.
