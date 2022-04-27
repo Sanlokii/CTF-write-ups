@@ -52,7 +52,10 @@ Je récupère donc le code source de cette page avec le même payload que préc�
 
 J'obtiens le code source suivant avec un commentaire ASCII intéressant :
 ```html
-Source code
+<section>
+      <td><img width="50%" class="center" src="categorie\private\Why-So-Sad-Funny-Clown-Face-Picture.jpg" alt="personal_attack.jpg"></td>
+      <!--don't leak (\x70\x65\x72\x73\x6F\x6E\x61\x6C) -->
+</section>
 ```
 
 Après conversion, je récupère la valeur suivante : **personal**
