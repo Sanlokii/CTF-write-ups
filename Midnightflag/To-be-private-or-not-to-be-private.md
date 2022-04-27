@@ -43,23 +43,21 @@ Après décodage, je vois le code PHP suivant correspondant aux filtres LFI appl
     ?>
 ```
 A partir de cet instant, je cherche un petit moment avant de poursuivre le challenge car le code PHP récupéré nous donne aucune information supplémentaire.
-J'essaye par la suite d'obtenir une RCE via différents payloads LFI mais rien de concluant.
 Le fuzzing n'étant pas autorisé sur ce challenge, il est venu le temps du **#guessing** !
 
-En regardant le nom du challenge et par rapport à la structure du site, après multiples tentatives je tente de joindre la page private.php : `https://cloud.midnightflag.fr/index.php?categorie=private.php` et j'ai bien un retour !
+En regardant le titre du challenge et en adéquation avec la structure du site, après plusieurs essais je tente de joindre la page private.php : `https://cloud.midnightflag.fr/index.php?categorie=private.php` et j'ai bien un retour !
 
 Je récupère donc le code source de cette page avec le même payload que précédemment :
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=private.php`
 
-J'obtiens le code source suivant :
+J'obtiens le code source suivant avec un commentaire ASCII intéréssant :
 ```html
 Source code
 ```
-Je remarque le commentaire suivant avec des chars en ASCII : `Source code`
 
 Après conversion, je récupère la valeur suivante : **personal**
 
-Je suppose donc que le site possède une catégorie personal, je me rend donc sur l'URL `https://cloud.midnightflag.fr/index.php?categorie=personal.php` et je tombe sur un enregistrement audio au format wav.
+Je suppose donc que le site possède une catégorie personal, je me rend donc sur l'URL `https://cloud.midnightflag.fr/index.php?categorie=personal.php` qui contient un enregistrement audio au format wav.
 
 Après téléchargement de l'enregistrement audio, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
 
