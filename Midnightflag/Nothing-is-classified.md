@@ -41,3 +41,5 @@ cat flag.txt
 ```
 
 Flag : MCTF{cL@$Sif1eD_D0cUm3N7}
+
+Merci au créateur du challenge.
