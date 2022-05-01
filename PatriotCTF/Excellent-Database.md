@@ -4,6 +4,8 @@
 
 ### Excellent Database
 
+**Dificulté :** Facile
+
 **Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
 
 Si vous pouvez vous connecter à l'utilisateur admin, je vous donnerai le flag.
