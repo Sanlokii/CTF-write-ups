@@ -128,7 +128,7 @@ Je me connecte avec mon compte et j'utilise le payload suivant dans le champ pas
 
 Une fois authentifié, le site m'indique que mon password est `UsernamePassword`
 
-Cela ressemble fortement à des en-têtes de colonnes, j'essaye donc de me m'authentifier avec le payload `=CONCATENATE(A2:B2)`
+Cela ressemble fortement à des en-têtes de colonnes, j'essaye donc de m'authentifier avec le payload `=CONCATENATE(A2:B2)`
 
 Je récupère le password du compte admin :
 ![image](https://user-images.githubusercontent.com/49941629/166080684-7400f832-64c2-49d3-b092-9b44f15eebf9.png)
