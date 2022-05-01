@@ -1,3 +1,23 @@
+# Patriot CTF
+
+## Web
+
+### Not So Secret
+
+**Difficulté :** Moyen
+
+**Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
+
+Si vous pouvez vous connecter à l'utilisateur administrateur, je vous donnerai le flag.
+
+Quelqu'un a piraté mon site après que j'ai lu son message, donc je ne lis plus les DM qui me sont envoyés ! > :( 
+
+En plus de cela, j'impose un filtre de caractères spéciaux encore plus sévère parce que je ne sais pas vraiment comment patcher mon code.
+
+p.s. Pour vous faire gagner du temps, n'essayez pas d'obtenir un reverse shell
+
+***
+
 ![image](https://user-images.githubusercontent.com/49941629/166097674-23a7b22f-8e3e-45e4-b726-d430b5997f4a.png)
 
 Cookie Flask
