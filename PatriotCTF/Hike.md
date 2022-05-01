@@ -1,4 +1,18 @@
-![image](https://user-images.githubusercontent.com/49941629/166084326-a3823074-441b-47a3-ab82-55cadb833dde.png)
+# Patriot CTF
+
+## OSINT
+
+### Hike
+
+**Enoncé :** C'est l'une de mes randonnées préférées. Je vous recommande de la faire, mais trouvez d'abord de quelle montagne il s'agit !
+
+Format du drapeau : PCTF{Mountain_Name} 
+
+Le challenge met à disposition une image **hike.jpg**.
+
+***
+
+L'image étant notre seul point de départ, je commence par extraire les métadonnées grâce à **exiftool** :
 
 ```
 exiftool hike.jpg                                         ──(Sat,Apr30)─┘
@@ -122,6 +136,8 @@ Hyperfocal Distance             : 2.36 m
 Light Value                     : 14.0
 ```
 
+J'effectue une recherche avec les cooodonnées GPS recupérées : `38 deg 33' 6.24", 78 deg 19' 59.86"` :
+
 ![image](https://user-images.githubusercontent.com/49941629/166084352-6d76e6e3-fec5-41d7-b36b-9890fcc4a751.png)
 
-PCTF{old_rag_mountain}
+FLAG : PCTF{old_rag_mountain}
