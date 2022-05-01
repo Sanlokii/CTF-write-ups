@@ -8,8 +8,6 @@
 
 Jetez un coup d'oeil à ce site web super élégant et fonctionnel.
 
-Le challenge nous donne l'URL suivante : `chal2.pctf.competitivecyber.club:49515`
-
 ***
 
 A la connexion sur cette URL, on tombe sur la page **index.hmtl** avec le code source suivant :
@@ -38,9 +36,7 @@ Via la requête, j'accède bien au fichier souhaité :
 
 Ceci dit, impossible d'exécuter une commande pour lister le contenu du répertoire /root.
 
-En relisant le message affiché sur la page **index.html** : `I will release my secret curly fry recipe when I am ready. For now it is safely held in my /root directory`
-
-Après quelques tentatives, je découvre l'existence du fichier recipe.txt.
+Après relecture ducode source HTML, je découvre l'existence du fichier recipe.txt. 
 
 Je relance donc ma commande curl avec le chemin complet et je récupère le contenu : `curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../root/recipe.txt`
 
