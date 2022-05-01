@@ -27,7 +27,7 @@ A la connexion sur cette URL, on tombe sur la page **index.hmtl** avec le code s
 
 On se doutes donc qu'il faut accéder à un fichier dans le répertoire **/root**.
 
-Il existe un exploit qui permet d'accéder à des ressources non-autorisées grâce à une requête CONNECT.
+Il existe un exploit qui permet d'accéder à des ressources non-autorisées grâce à une requête CONNECT sur des serveurs web en Golang.
 
 J'essaye dans un premier temps d'accéder au fichier **/etc/passwd** via curl : `curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../..
 /etc/passwd`
