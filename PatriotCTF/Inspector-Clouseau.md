@@ -1,3 +1,15 @@
+# Patriot CTF
+
+## Web
+
+### Inspector Clouseau
+
+**Enoncé :** Pouvez-vous aider l'inspecteur Clouseau à trouver le message secret ?
+
+***
+
+Une simple inspection du code source permet de récupérer le flag :
+
 ```
 <!DOCTYPE html>
 <html>
@@ -12,4 +24,4 @@
 </html>
 ```
 
-![image](https://user-images.githubusercontent.com/49941629/166070173-e8050afd-483c-4b92-bb61-ff9c10d5d341.png)
+FLAG : PCTF{i_w0u1d_1ik3_t0_buy_4_h4mburg3r}
