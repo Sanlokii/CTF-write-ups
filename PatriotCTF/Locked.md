@@ -58,7 +58,11 @@ fetch(thing).then(function(response) {
 });
 ```
 
-Je remarque qu'il y a une variable contenant un triple encodage base64 : `var thing = atob(atob(atob("VERKR2EySlhiSFZNTUVaTVUydFNWRk5yV2t4U1JrNUxWRVZHVkZKcE9YSmpNbmhyWVcxYWRtRlhSbXRqTWxsMVpFaG9NQT09")));`
+Je remarque qu'il y a une variable contenant un triple encodage base64 : 
+
+```
+var thing = atob(atob(atob("VERKR2EySlhiSFZNTUVaTVUydFNWRk5yV2t4U1JrNUxWRVZHVkZKcE9YSmpNbmhyWVcxYWRtRlhSbXRqTWxsMVpFaG9NQT09")));
+```
 
 J'utilise l'outil decodify pour décoder cette string base64.
 
