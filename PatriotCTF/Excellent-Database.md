@@ -1,5 +1,16 @@
-![image](https://user-images.githubusercontent.com/49941629/166080520-c85c52fa-f911-43e7-86ce-9d7891db9f80.png)
+# Patriot CTF
 
+## Web
+
+### Excellent Database
+
+**Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
+
+Si vous pouvez vous connecter à l'utilisateur admin, je vous donnerai le flag.
+
+Je teste cette nouvelle architecture de base de données et elle est si belle que je vous laisserai regarder le code.
+
+Mise à disposition du code source **main.py** :
 
 ```python
 import os
@@ -99,15 +110,29 @@ if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0', threaded=True)
 ```
 
-![image](https://user-images.githubusercontent.com/49941629/166080578-cb4d4984-c9ea-4dfe-ac1a-2b74e3cc6cb6.png)
+***
+
+En lisant le code source, on peut s'apercevoir que la base de données utilisée est le fichier **db.xlsx**.
+
+Il va donc falloir bypass l'authentification via une CSVi (CSV Injection).
+
+Lors de la création d'un compte, on peut constater que la page web affiche notre mot de passe lorsque l'on est authentifié.
 
 ![image](https://user-images.githubusercontent.com/49941629/166080611-b551ae13-06e5-4ad4-90cf-79bed588f930.png)
 
+Le but va être d'injecter notre payload sur le champ password afin de récupérer le password du compte admin.
+
+Je me connecte avec mon compte et j'utilise le payload suivant dans le champ password : `=CONCATENATE(A1:B1)`
+
+Une fois authentifié, le site m'indique que mon password est `UsernamePassword`
+
+Cela ressemble fortement à des en-têtes de colonnes, j'essaye donc de me m'authentifier avec le payload `=CONCATENATE(A2:B2)`
+
+Je récupère le password du compte admin :
 ![image](https://user-images.githubusercontent.com/49941629/166080684-7400f832-64c2-49d3-b092-9b44f15eebf9.png)
 
-`=CONCATENATE(A2:E2)`
-
-SuperStrongPassword
+Il me reste plus qu'à m'authentifier avec les credentials `admin:SuperStrongPassword` pour récupérer le flag :
 
 ![image](https://user-images.githubusercontent.com/49941629/166080726-271a85c0-8132-4de2-9d19-0c7dd2468754.png)
 
+FLAG : PCTF{Exc3l_is_th3_b3st_d4t4b4s3}
