@@ -2,7 +2,9 @@
 
 ## Stéganographie
 
-### Challenge : Nothing is classified
+### Nothing is classified
+
+**Difficulté :** Facile
 
 ***
 

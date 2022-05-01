@@ -2,7 +2,9 @@
 
 ## Web / Stéganographie
 
-### Challenge : To be private or not to be private 
+### To be private or not to be private 
+
+**Difficulté :** Facile
 
 ***
 
