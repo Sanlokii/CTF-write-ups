@@ -4,6 +4,8 @@
 
 ### Inspector Clouseau
 
+**Difficulté :** Débutant
+
 **Enoncé :** Pouvez-vous aider l'inspecteur Clouseau à trouver le message secret ?
 
 ***
