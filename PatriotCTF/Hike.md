@@ -4,6 +4,8 @@
 
 ### Hike
 
+**Dificulté :** Débutant
+
 **Enoncé :** C'est l'une de mes randonnées préférées. Je vous recommande de la faire, mais trouvez d'abord de quelle montagne il s'agit !
 
 Format du drapeau : PCTF{Mountain_Name} 
