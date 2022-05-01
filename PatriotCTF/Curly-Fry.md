@@ -4,7 +4,7 @@
 
 ### Curly Fry
 
-**Dificulté :** Facile
+**Difficulté :** Facile
 
 **Enoncé :** Qui a besoin de Flask quand vous avez Golang -- la nouvelle méta pour les applications web.
 
