@@ -4,7 +4,7 @@
 
 ### Excellent Database
 
-**Dificulté :** Facile
+**Difficulté :** Facile
 
 **Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
 
