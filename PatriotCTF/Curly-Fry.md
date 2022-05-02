@@ -42,7 +42,7 @@ Via la requête, j'accède bien au fichier souhaité :
 
 Ceci dit, impossible d'exécuter une commande pour lister le contenu du répertoire /root.
 
-Après relecture ducode source HTML, je découvre l'existence du fichier recipe.txt. 
+Après relecture du code source HTML, je découvre l'existence du fichier recipe.txt. 
 
 Je relance donc ma commande curl avec le chemin complet et je récupère le contenu : 
 
