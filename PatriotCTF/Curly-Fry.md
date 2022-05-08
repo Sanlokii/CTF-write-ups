@@ -4,15 +4,15 @@
 
 ### Curly Fry
 
-**Difficulté :** Facile
+**Difficulty:** Easy
 
-**Enoncé :** Qui a besoin de Flask quand vous avez Golang -- la nouvelle méta pour les applications web.
+**Statement:** Who needs Flask when you have Golang -- the new meta for web applications.
 
-Jetez un coup d'oeil à ce site web super élégant et fonctionnel.
+Take a look at this super sleek and functional website.
 
 ***
 
-A la connexion sur cette URL, on tombe sur la page **index.hmtl** avec le code source suivant :
+Upon connecting to this URL, we come across the **index.hmtl** page with the following source code:
 
 ```html
 <html>
@@ -25,26 +25,26 @@ A la connexion sur cette URL, on tombe sur la page **index.hmtl** avec le code s
 </html>
 ```
 
-On se doute donc qu'il faut accéder à un fichier dans le répertoire **/root**.
+One suspects that one must access a file in the **/root** directory.
 
-Il existe un exploit qui permet d'accéder à des ressources non-autorisées grâce à une requête CONNECT sur des serveurs web en Golang.
+There is an exploit that allows to access unauthorized resources with a CONNECT request on web servers in Golang.
 
-J'essaye dans un premier temps d'accéder au fichier **/etc/passwd** via curl : 
+I first try to access the file **/etc/passwd** via curl : 
 
 ```
 curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../..
 /etc/passwd
 ```
 
-Via la requête, j'accède bien au fichier souhaité :
+Via the request, I can access the desired file:
 
 ![image](https://user-images.githubusercontent.com/49941629/166076146-30bb3dff-12a2-4c41-b867-73f19eb2b62b.png)
 
-Ceci dit, impossible d'exécuter une commande pour lister le contenu du répertoire /root.
+However, it is impossible to execute a command to list the contents of the /root directory.
 
-Après relecture du code source HTML, je découvre l'existence du fichier recipe.txt. 
+After rereading the HTML source code, I discover the existence of the recipe.txt file. 
 
-Je relance donc ma commande curl avec le chemin complet et je récupère le contenu : 
+So I run my curl command again with the full path and I get the content: 
 
 ```
 curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../root/recipe.txt
@@ -52,4 +52,4 @@ curl --path-as-is -X CONNECT chal2.pctf.competitivecyber.club:49515/../../../roo
 
 ![image](https://user-images.githubusercontent.com/49941629/166076128-1acaa89b-ad4e-4c55-900e-5062165d01f0.png)
 
-FLAG : PCTF{tru5t_m3_im_4_ch3f}
+Flag: PCTF{tru5t_m3_im_4_ch3f}
