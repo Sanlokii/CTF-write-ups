@@ -1,6 +1,6 @@
 # EZ CTF
 
-Team : Soloteam
+Team : Soloteam (I'm was alone this time)
 
 ![IMAGE](https://user-images.githubusercontent.com/49941629/167300788-d9954688-36d5-42d9-8fe4-357802e448e7.PNG)
 ***
