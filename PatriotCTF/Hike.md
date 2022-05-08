@@ -4,17 +4,17 @@
 
 ### Hike
 
-**Dificulté :** Débutant
+**Difficulty:** Beginner
 
-**Enoncé :** C'est l'une de mes randonnées préférées. Je vous recommande de la faire, mais trouvez d'abord de quelle montagne il s'agit !
+**Statement:** This is one of my favorite hikes. I recommend you do it, but find out which mountain it is first!
 
-Format du drapeau : PCTF{Mountain_Name} 
+Flag format: PCTF{Mountain_Name} 
 
-Le challenge met à disposition une image **hike.jpg**.
+The challenge provides an image **hike.jpg**.
 
 ***
 
-L'image étant notre seul point de départ, je commence par extraire les métadonnées grâce à **exiftool** :
+The image being our only starting point, I start by extracting the metadata with **exiftool**:
 
 ```
 exiftool hike.jpg                                         ──(Sat,Apr30)─┘
@@ -138,8 +138,8 @@ Hyperfocal Distance             : 2.36 m
 Light Value                     : 14.0
 ```
 
-J'effectue une recherche avec les cooodonnées GPS recupérées : `38 deg 33' 6.24", 78 deg 19' 59.86"` :
+I do a search with the GPS co-data retrieved: `38 deg 33' 6.24", 78 deg 19' 59.86"` :
 
 ![image](https://user-images.githubusercontent.com/49941629/166084352-6d76e6e3-fec5-41d7-b36b-9890fcc4a751.png)
 
-FLAG : PCTF{old_rag_mountain}
+Flag: PCTF{old_rag_mountain}
