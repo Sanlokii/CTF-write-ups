@@ -4,13 +4,13 @@
 
 ### Rock and Roll
 
-**Difficulté :** Débutant
+**Difficulty:** Beginner
 
-**Enoncé :** Le site web est vide ! Je ne peux rien voir. Pouvez-vous m'aider à trouver ce qui est caché ?
+**Statement:** The website is empty! I can't see anything. Can you help me find what is hidden?
 
 ***
 
-Le site étant vide, un simple contrôle des headers avec curl nous donne le flag : `curl -I chal2.pctf.competitivecyber.club:49162`
+The site being empty, a simple header check with curl gives us the flag: `curl -I chal2.pctf.competitivecyber.club:49162`
 
 ```                                                                                             
 HTTP/1.1 200 OK
@@ -23,4 +23,4 @@ Refresh: 5; url=https://www.youtube.com/watch?v=dQw4w9WgXcQ
 Content-Length: 0
 ```
 
-FLAG : PCTF{r1Ck_D0wn_7h3_r0ll}
+Flag: PCTF{r1Ck_D0wn_7h3_r0ll}
