@@ -4,15 +4,15 @@
 
 ### Excellent Database
 
-**Difficulté :** Facile
+**Difficulty:** Easy
 
-**Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
+**Statement:** I am creating the next big social networking platform, but I am used to setting up unsecured software.
 
-Si vous pouvez vous connecter à l'utilisateur admin, je vous donnerai le flag.
+If you can login to the admin user, I will give you the flag.
 
-Je teste cette nouvelle architecture de base de données et elle est si belle que je vous laisserai regarder le code.
+I'm testing this new database architecture and it's so beautiful I'll let you look at the code.
 
-Mise à disposition du code source **main.py** :
+Making the source code available **main.py** :
 
 ```python
 import os
@@ -45,7 +45,7 @@ def base():
     else:
         Users = read_db()
         username = session.get("username")
-        password = Users.query(f"Username == '{username}'")["Password"].values[0]
+        password = Users.query(f "Username == '{username}'")["Password"].values[0]
         return render_template('index.html', name=username, password=password)
 
 
@@ -71,7 +71,7 @@ def login():
         if username not in Users.Username.values:     
             flash('Please check your login details and try again.', 'danger')
             return redirect(url_for('login'))
-        elif password != Users.query(f"Username == '{username}'")["Password"].values[0]:
+        elif password != Users.query(f "Username == '{username}'")["Password"].values[0]:
             flash('Please check your login details and try again.', 'danger')
             return redirect(url_for('login'))
 
@@ -114,27 +114,27 @@ if __name__ == "__main__":
 
 ***
 
-En lisant le code source, on peut s'apercevoir que la base de données utilisée est le fichier **db.xlsx**.
+Reading the source code, we can see that the database used is the file **db.xlsx**.
 
-Il va donc falloir bypass l'authentification via une CSVi (CSV Injection).
+We will have to bypass the authentication via a CSVi (CSV Injection).
 
-Lors de la création d'un compte, on peut constater que la page web affiche notre mot de passe lorsque l'on est authentifié.
+When creating an account, we can see that the web page displays our password when we are authenticated.
 
 ![image](https://user-images.githubusercontent.com/49941629/166080611-b551ae13-06e5-4ad4-90cf-79bed588f930.png)
 
-Le but va être d'injecter notre payload sur le champ password afin de récupérer le password du compte admin.
+The goal is to inject our payload on the password field in order to get the password of the admin account.
 
-Je me connecte avec mon compte et j'utilise le payload suivant dans le champ password : `=CONCATENATE(A1:B1)`
+I connect with my account and I use the following payload in the password field: `=CONCATENATE(A1:B1)`
 
-Une fois authentifié, le site m'indique que mon password est `UsernamePassword`
+Once authenticated, the site tells me that my password is `UsernamePassword`.
 
-Cela ressemble fortement à des en-têtes de colonnes, j'essaye donc de m'authentifier avec le payload `=CONCATENATE(A2:B2)`
+This looks very much like column headers, so I try to authenticate with the payload `=CONCATENATE(A2:B2)`
 
-Je récupère le password du compte admin :
+I get the password for the admin account:
 ![image](https://user-images.githubusercontent.com/49941629/166080684-7400f832-64c2-49d3-b092-9b44f15eebf9.png)
 
-Il me reste plus qu'à m'authentifier avec les credentials `admin:SuperStrongPassword` pour récupérer le flag :
+I just have to authenticate with the credentials `admin:SuperStrongPassword` to get the flag:
 
 ![image](https://user-images.githubusercontent.com/49941629/166080726-271a85c0-8132-4de2-9d19-0c7dd2468754.png)
 
-FLAG : PCTF{Exc3l_is_th3_b3st_d4t4b4s3}
+Flag: PCTF{Exc3l_is_th3_b3st_d4t4b4s3}
