@@ -12,7 +12,7 @@
 
 For this challenge, you need to connect to the remote server on port 7777.
 
-Once connected, we are on a bash shell with the return command `Are you root?`
+Once connected, we are on a bash shell with the return: `Are you root?`
 
 Sending a single value or command closes the shell and the connection to the server.
 
