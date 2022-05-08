@@ -4,13 +4,13 @@
 
 ### Inspector Clouseau
 
-**Difficulté :** Débutant
+**Difficulty:** Beginner
 
-**Enoncé :** Pouvez-vous aider l'inspecteur Clouseau à trouver le message secret ?
+**Statement:** Can you help Inspector Clouseau find the secret message?
 
 ***
 
-Une simple inspection du code source permet de récupérer le flag :
+A simple inspection of the source code allows to get the flag :
 
 ```
 <!DOCTYPE html>
@@ -26,4 +26,4 @@ Une simple inspection du code source permet de récupérer le flag :
 </html>
 ```
 
-FLAG : PCTF{i_w0u1d_1ik3_t0_buy_4_h4mburg3r}
+Flag: PCTF{i_w0u1d_1ik3_t0_buy_4_h4mburg3r}
