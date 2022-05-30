@@ -14,3 +14,4 @@ Team : Soloteam
 
 - System - [Undercover#1](https://github.com/Sanlokii/CTF-write-ups/blob/main/HeroCTF-v4/Undercover%231.md)
 - System - [Undercover#2](https://github.com/Sanlokii/CTF-write-ups/blob/main/HeroCTF-v4/Undercover%232.md)
+- Web - [SmallMistakeBigMistake](https://github.com/Sanlokii/CTF-write-ups/blob/main/HeroCTF-v4/SmallMistakeBigMistake.md)
