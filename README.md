@@ -1,6 +1,6 @@
 # CTF write-ups
 
-Welcome to my write-ups.
+Welcome to my write-ups about some CTFs
 
 My root-me profile : [https://www.root-me.org/Sanlokii](https://www.root-me.org/Sanlokii)
 
