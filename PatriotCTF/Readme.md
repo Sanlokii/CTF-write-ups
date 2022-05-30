@@ -11,5 +11,6 @@ Team: Soloteam
 ### Challenges
 
 - OSINT - [Hike](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Hike.md)
+- Web - [Curly fry](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Curly-Fry.md)
 
 
