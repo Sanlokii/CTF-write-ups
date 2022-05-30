@@ -14,3 +14,4 @@ Team: Soloteam
 - Web - [Curly Fry](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Curly-Fry.md)
 - Web - [Excellent Database](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Excellent-Database.md)
 - Web - [Inspector Clouseau](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Inspector-Clouseau.md)
+- Web - [Locked](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Locked.md)
