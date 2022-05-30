@@ -16,3 +16,4 @@ Team: Soloteam
 - Web - [Inspector Clouseau](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Inspector-Clouseau.md)
 - Web - [Locked](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Locked.md)
 - Web - [Not So Secret](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Not-So-Secret.md)
+- Web - [Rock and Roll](https://github.com/Sanlokii/CTF-write-ups/blob/main/PatriotCTF/Rock-and-Roll.md)
