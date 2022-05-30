@@ -43,7 +43,7 @@ user1       2842  0.0  0.0   5480   968 pts/0    S+   11:00   0:00              
 drwxrwxrwx 1 root root 4096 Apr  8 10:48 /var/www/html
 ```
 
-So I decide to create a `shell.php` in `/var/www/html/` file with the following content in order to execute commands through the **cmd** parameter with the rights of the dev user :
+So I decide to create a `shell.php` in `/var/www/html/` with the following content in order to execute commands through the **cmd** parameter with the rights of the dev user :
 
 ```
 <html>
