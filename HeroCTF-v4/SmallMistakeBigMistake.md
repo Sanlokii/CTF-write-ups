@@ -64,7 +64,7 @@ This means that the key can only be composed of 16 different combinations
 
 With this information, we just have to generate the cookie and sign it with the 16 different combinations with `flask-unsign`.
 
-After a few tries, we get the right key :
+After a few tries, we get the right cookie :
 
 ```
 # flask-unsign --sign --cookie "{'username': 'admin'}" --secret '22222222222222222222222222222222' --no-literal-eval
