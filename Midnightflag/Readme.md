@@ -6,8 +6,6 @@
 - Web/Steg - [To be private or not to be private](https://github.com/Sanlokii/CTF-write-ups/blob/main/Midnightflag/To-be-private-or-not-to-be-private.md)
 - Steg - [Nothing is classified](https://github.com/Sanlokii/CTF-write-ups/blob/main/Midnightflag/Nothing-is-classified.md)
 
-***
-
 ### Results
 
 Team: Soloteam
