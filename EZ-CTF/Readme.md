@@ -3,7 +3,7 @@
 ### Challenges
 
 - Pwn - [Mario bros](https://github.com/Sanlokii/CTF-write-ups/blob/main/EZ-CTF/Mario-bros.md)
-- Pwn - [Save Peach](https://github.com/Sanlokii/CTF-write-ups/blob/main/EZ-CTF/Save-Peach.md)
+- Pwn - [Save Peach](https://github.com/Sanlokii/CTF-write-ups/blob/main/EZ-CTF/Save-peach.md)
 - Web - [I made a blog](https://github.com/Sanlokii/CTF-write-ups/blob/main/EZ-CTF/I-made-a-blog.md)
 - Web - [Super Secure](https://github.com/Sanlokii/CTF-write-ups/blob/main/EZ-CTF/Super-Secure.md)
 
