@@ -28,4 +28,4 @@ With this information, we can connect to the administration part of WordPress `/
 
 ![image](https://user-images.githubusercontent.com/49941629/182033416-ebe70fbf-423f-4597-b72d-c7a4f814cf95.png)
 
-Flag: TFCCTF{WPNe3MgF$sNj8E8F6d}
+Flag: `TFCCTF{WPNe3MgF$sNj8E8F6d}`
