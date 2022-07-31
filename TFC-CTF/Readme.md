@@ -7,6 +7,7 @@
 - Web - [ARE YOU THE ADMIN?](https://github.com/Sanlokii/CTF-write-ups/blob/main/TFC-CTF/Are-you-the-admin.md)
 - Web - [DEEPLINKS](https://github.com/Sanlokii/CTF-write-ups/blob/main/TFC-CTF/Deeplinks.md)
 - Web - [CALENDAR](https://github.com/Sanlokii/CTF-write-ups/blob/main/TFC-CTF/Calendar.md)
+- Web - [DIAMONDS](https://github.com/Sanlokii/CTF-write-ups/blob/main/TFC-CTF/Diamonds.md)
 
 ### Results
 
