@@ -36,4 +36,4 @@ We get the file `apple-app-site-association` with the following content:
 }
 ```
 
-Flag: TFCCTF{4ppl3_4pp_51t3_4550c14t10n}
+Flag: `TFCCTF{4ppl3_4pp_51t3_4550c14t10n}`
