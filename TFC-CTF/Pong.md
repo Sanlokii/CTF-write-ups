@@ -24,4 +24,4 @@ You just have to do a `ls /`: `http://01.linux.challenges.ctf.thefewchosen.com:4
 
 ![image](https://user-images.githubusercontent.com/49941629/182030414-d1be59d8-c4f8-4d25-972c-3e25287eed1b.png)
 
-Flag: TFCCTF{C0mm4nd_1nj3c5i0n_1s_E4sy}
+Flag: `TFCCTF{C0mm4nd_1nj3c5i0n_1s_E4sy}`
