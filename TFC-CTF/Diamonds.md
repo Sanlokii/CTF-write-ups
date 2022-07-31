@@ -84,7 +84,7 @@ I just have to `cat` the flag with the payload :
 
 ![image](https://user-images.githubusercontent.com/49941629/182034715-e10c7fa5-7c1f-4056-95f4-7a0fe26cf143.png)
 
-Flag: TFCCTF{02718f35dddc266e0ac40c0c0dcc98c34edd545678dc752ba9831b6d73bc706f}
+Flag: `TFCCTF{02718f35dddc266e0ac40c0c0dcc98c34edd545678dc752ba9831b6d73bc706f}`
 
 By curiosity, I recovered the contents of the file `input.rb` to see the configured regex :
 
