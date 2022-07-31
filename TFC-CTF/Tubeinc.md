@@ -79,3 +79,5 @@ A `ls` then a `cat` allows us to get the flag :
 ![image](https://user-images.githubusercontent.com/49941629/182037904-554c31d7-111b-44dd-ad48-eb796c0b0589.png)
 
 Flag : `TFCCTF{F*_$pr1nG!_I_m_m0R3_0f_4_w1nt3r_p3r$0n_aNyw4y!}`
+
+For the root privesc, I did not find the method.
