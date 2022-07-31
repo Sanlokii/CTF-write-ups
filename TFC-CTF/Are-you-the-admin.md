@@ -108,7 +108,7 @@ export default async function handler(
   return res.status(200).end();
 ```
 
-And the file 
+And the file `schema.prisma`:
 ```prisma
 generator client {
   provider = "prisma-client-js"
@@ -167,7 +167,7 @@ Accept-Encoding: gzip, deflate
 Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
 Connection: close
 
-{"username":"Sanlokii","isAdmin:true}
+{"username":"Sanlokii","isAdmin":true}
 ```
 
 The website get back :
