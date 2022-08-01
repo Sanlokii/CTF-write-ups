@@ -99,7 +99,7 @@ end
 
 get '/'
 do
-  @input = \"Write something nice here that passes our regex"
+  @input = "Write something nice here that passes our regex"
 erb: 'index'
 end
 
